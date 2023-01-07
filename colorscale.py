@@ -45,3 +45,13 @@ class Colorscale:
             [0.75, "Green"],
             [1, "Green"],
         ]
+
+        self.zollerbucht = [
+            [0, "black"],
+            [0.1875, "MidnightBlue"],
+            [0.375, "Blue"],
+            [0.5625, "DodgerBlue"],
+            [0.75, "Turquoise"],
+            [0.75, "Green"],
+            [1, "Green"],
+        ]

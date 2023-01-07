@@ -37,11 +37,14 @@ elevation_data_betlis = np.load(
     "/home/gscd/Documents/Underwater-Maps/npy_data/betlis.npy"
 )
 elevation_data_au = np.load("/home/gscd/Documents/Underwater-Maps/npy_data/au.npy")
+elevation_data_zollerbucht = np.load(
+    "/home/gscd/Documents/Underwater-Maps/npy_data/zollerbucht.npy"
+)
 
 d = {
-    "Tauchplatz": ["Betlis", "Au"],
-    "z_data": [elevation_data_betlis, elevation_data_au],
-    "colorscale": [colorscale.betlis, colorscale.au],
+    "Tauchplatz": ["Betlis", "Au", "Zollerbucht"],
+    "z_data": [elevation_data_betlis, elevation_data_au, elevation_data_zollerbucht],
+    "colorscale": [colorscale.betlis, colorscale.au, colorscale.zollerbucht],
 }
 
 df = pd.DataFrame(data=d)

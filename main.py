@@ -21,6 +21,7 @@ import pandas as pd
 import numpy as np
 
 from colorscale import Colorscale
+from elevationData import ElevationData
 
 __author__ = "Jonas Gschwend"
 __copyright__ = "Copyright 2021, Jonas Gschwend"
@@ -32,18 +33,11 @@ __status__ = "Production"
 
 app = Dash(__name__)
 colorscale = Colorscale()
-
-elevation_data_betlis = np.load(
-    "/home/gscd/Documents/Underwater-Maps/npy_data/betlis.npy"
-)
-elevation_data_au = np.load("/home/gscd/Documents/Underwater-Maps/npy_data/au.npy")
-elevation_data_zollerbucht = np.load(
-    "/home/gscd/Documents/Underwater-Maps/npy_data/zollerbucht.npy"
-)
+elevation_data = ElevationData()
 
 d = {
     "Tauchplatz": ["Betlis", "Au", "Zollerbucht"],
-    "z_data": [elevation_data_betlis, elevation_data_au, elevation_data_zollerbucht],
+    "z_data": [elevation_data.betlis, elevation_data.au, elevation_data.zollerbucht],
     "colorscale": [colorscale.betlis, colorscale.au, colorscale.zollerbucht],
 }
 

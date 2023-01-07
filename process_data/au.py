@@ -16,7 +16,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 import numpy as np
-import process_data.process_data as process
+from pathlib import Path
+import processData as process
 
 __author__ = "Jonas Gschwend"
 __copyright__ = "Copyright 2021, Jonas Gschwend"
@@ -54,4 +55,4 @@ elevation_data = process.interpolateNan(elevation_data, "linear")
 elevation_data = elevation_data - 0.20
 
 
-np.save("/home/gscd/Documents/Underwater-Maps/npy_data/au", elevation_data)
+np.save("{}/npy_data/au".format(Path(__file__).parent.parent), elevation_data)

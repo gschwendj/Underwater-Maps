@@ -18,10 +18,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from dash import Dash, html, dcc, Input, Output
 import plotly.graph_objects as go
 import pandas as pd
-import numpy as np
 
-from colorscale import Colorscale
-from elevationData import ElevationData
+from src.colorscale import Colorscale
+from src.elevationData import ElevationData
 
 __author__ = "Jonas Gschwend"
 __copyright__ = "Copyright 2021, Jonas Gschwend"
@@ -124,4 +123,4 @@ def update_graph(tauchplatz, contours, contours_width):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(host="0.0.0.0")

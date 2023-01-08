@@ -25,7 +25,7 @@ __maintainer__ = "Jonas Gschwend"
 __email__ = "jo.gschwend@"
 __status__ = "Production"
 
-path = Path(__file__).parent
+path = Path(__file__).parent.parent
 
 
 class ElevationData:

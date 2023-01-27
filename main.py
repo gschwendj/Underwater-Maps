@@ -35,9 +35,19 @@ colorscale = Colorscale()
 elevation_data = ElevationData()
 
 d = {
-    "Tauchplatz": ["Betlis", "Au", "Zollerbucht"],
-    "z_data": [elevation_data.betlis, elevation_data.au, elevation_data.zollerbucht],
-    "colorscale": [colorscale.betlis, colorscale.au, colorscale.zollerbucht],
+    "Tauchplatz": ["Betlis", "Au", "Zollerbucht", "Murg West"],
+    "z_data": [
+        elevation_data.betlis,
+        elevation_data.au,
+        elevation_data.zollerbucht,
+        elevation_data.murg_west,
+    ],
+    "colorscale": [
+        colorscale.betlis,
+        colorscale.au,
+        colorscale.zollerbucht,
+        colorscale.murg_west,
+    ],
 }
 
 df = pd.DataFrame(data=d)

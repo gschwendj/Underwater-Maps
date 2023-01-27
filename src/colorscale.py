@@ -55,3 +55,13 @@ class Colorscale:
             [0.75, "Green"],
             [1, "Green"],
         ]
+        border = 125 / (125 + 64)
+        self.murg_west = [
+            [0, "black"],
+            [border / 4 * 1, "MidnightBlue"],
+            [border / 4 * 2, "Blue"],
+            [border / 4 * 3, "DodgerBlue"],
+            [border, "Turquoise"],
+            [border, "Green"],
+            [1, "Green"],
+        ]

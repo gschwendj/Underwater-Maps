@@ -33,3 +33,4 @@ class ElevationData:
         self.betlis = np.load("{}/npy_data/betlis.npy".format(path))
         self.au = np.load("{}/npy_data/au.npy".format(path))
         self.zollerbucht = np.load("{}/npy_data/zollerbucht.npy".format(path))
+        self.murg_west = np.load("{}/npy_data/murg_west.npy".format(path))

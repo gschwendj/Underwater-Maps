@@ -79,6 +79,7 @@ app.layout = html.Div(
         ),
         dcc.Graph(id="indicator-graphic", style={"width": "99vw", "height": "92vh"}),
         # dcc.Graph(id="indicator-graphic", style={"width": "99vw", "height": "92vh"}),
+        html.Div(children="Source: Federal Office of Topography swisstopo"),
     ]
 )
 
@@ -127,6 +128,17 @@ def update_graph(tauchplatz, contours, contours_width):
     fig.update_layout(
         title="Tauchplatz {}".format(tauchplatz),
         font=dict(size=18),
+    )
+
+    note = 'Source:<a href="https://www.swisstopo.admin.ch/de/home.html"">Federal Office of Topography swisstopo'
+    fig.add_annotation(
+        showarrow=False,
+        text=note,
+        font=dict(size=10),
+        xref="x domain",
+        x=0.5,
+        yref="y domain",
+        y=-0.5,
     )
 
     return fig

@@ -84,10 +84,10 @@ elevation_2739_1220 = bathy3d_chlv95_ln02_2739_1220
 elevation_data1 = np.append(elevation_2739_1219, elevation_2739_1220, 0)
 elevation_data2 = np.append(elevation_2740_1219, elevation_2740_1220, 0)
 elevation_data = np.append(elevation_data1, elevation_data2, 1)
-elevation_data = elevation_data[300:1600, :]
+elevation_data = elevation_data[300:1600, 700:1800]
 elevation_data -= 0.1
-elevation_data[elevation_data > 125] = 125
-elevation_data[elevation_data < -125] = -125
+elevation_data[elevation_data > 91] = 91
+elevation_data[elevation_data < -120] = -120
 elevation_data = process.interpolateNan(elevation_data, "linear")
 
 np.save(

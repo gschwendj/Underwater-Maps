@@ -65,7 +65,7 @@ class Colorscale:
             [border, "Green"],
             [1, "Green"],
         ]
-        border = 0.503
+        border = 120 / (120 + 90)
         self.mols = [
             [0, "black"],
             [border / 4 * 1, "MidnightBlue"],
@@ -75,4 +75,13 @@ class Colorscale:
             [border, "Green"],
             [1, "Green"],
         ]
-        self.tiefenwinkel = self.mols
+        border = 0.503
+        self.tiefenwinkel = [
+            [0, "black"],
+            [border / 4 * 1, "MidnightBlue"],
+            [border / 4 * 2, "Blue"],
+            [border / 4 * 3, "DodgerBlue"],
+            [border, "Turquoise"],
+            [border, "Green"],
+            [1, "Green"],
+        ]

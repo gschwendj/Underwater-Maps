@@ -36,28 +36,28 @@ elevation_data = ElevationData()
 
 d = {
     "Tauchplatz": [
-        "Betlis",
         "Au",
-        "Zollerbucht",
-        "Murg West",
+        "Betlis",
         "Känzeli und Hafen Mols",
+        "Murg West",
         "Tiefenwinkel",
+        "Zollerbucht",
     ],
     "z_data": [
-        elevation_data.betlis,
         elevation_data.au,
-        elevation_data.zollerbucht,
-        elevation_data.murg_west,
+        elevation_data.betlis,
         elevation_data.mols,
+        elevation_data.murg_west,
         elevation_data.tiefenwinkel,
+        elevation_data.zollerbucht,
     ],
     "colorscale": [
-        colorscale.betlis,
         colorscale.au,
-        colorscale.zollerbucht,
-        colorscale.murg_west,
+        colorscale.betlis,
         colorscale.mols,
+        colorscale.murg_west,
         colorscale.tiefenwinkel,
+        colorscale.zollerbucht,
     ],
 }
 

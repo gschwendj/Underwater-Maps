@@ -38,6 +38,7 @@ d = {
     "Tauchplatz": [
         "Au",
         "Betlis",
+        "Broder",
         "Känzeli und Hafen Mols",
         "Murg West",
         "Tiefenwinkel",
@@ -46,6 +47,7 @@ d = {
     "z_data": [
         elevation_data.au,
         elevation_data.betlis,
+        elevation_data.broder,
         elevation_data.mols,
         elevation_data.murg_west,
         elevation_data.tiefenwinkel,
@@ -54,6 +56,7 @@ d = {
     "colorscale": [
         colorscale.au,
         colorscale.betlis,
+        colorscale.broder,
         colorscale.mols,
         colorscale.murg_west,
         colorscale.tiefenwinkel,

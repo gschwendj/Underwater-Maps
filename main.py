@@ -42,6 +42,7 @@ d = {
         "Känzeli und Hafen Mols",
         "Murg West",
         "Tiefenwinkel",
+        "Zick-Zack",
         "Zollerbucht",
     ],
     "z_data": [
@@ -51,6 +52,7 @@ d = {
         elevation_data.mols,
         elevation_data.murg_west,
         elevation_data.tiefenwinkel,
+        elevation_data.zick_zack,
         elevation_data.zollerbucht,
     ],
     "colorscale": [
@@ -60,6 +62,7 @@ d = {
         colorscale.mols,
         colorscale.murg_west,
         colorscale.tiefenwinkel,
+        colorscale.zick_zack,
         colorscale.zollerbucht,
     ],
 }

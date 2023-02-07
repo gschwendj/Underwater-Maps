@@ -37,3 +37,4 @@ class ElevationData:
         self.mols = np.load("{}/npy_data/hafen_mols_kaenzeli.npy".format(path))
         self.tiefenwinkel = np.load("{}/npy_data/tiefenwinkel.npy".format(path))
         self.broder = np.load("{}/npy_data/broder.npy".format(path))
+        self.zick_zack = np.load("{}/npy_data/zick_zack.npy".format(path))

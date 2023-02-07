@@ -75,3 +75,4 @@ class Colorscale:
             [border, "Green"],
             [1, "Green"],
         ]
+        self.tiefenwinkel = self.mols

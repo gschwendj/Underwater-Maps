@@ -41,6 +41,7 @@ d = {
         "Zollerbucht",
         "Murg West",
         "Känzeli und Hafen Mols",
+        "Tiefenwinkel",
     ],
     "z_data": [
         elevation_data.betlis,
@@ -48,6 +49,7 @@ d = {
         elevation_data.zollerbucht,
         elevation_data.murg_west,
         elevation_data.mols,
+        elevation_data.tiefenwinkel,
     ],
     "colorscale": [
         colorscale.betlis,
@@ -55,6 +57,7 @@ d = {
         colorscale.zollerbucht,
         colorscale.murg_west,
         colorscale.mols,
+        colorscale.tiefenwinkel,
     ],
 }
 

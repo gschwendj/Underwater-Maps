@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""loads all elevation data of the dive sites
+"""defines the different markers for the divesites
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -14,8 +14,6 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-import numpy as np
-from pathlib import Path
 
 __author__ = "Jonas Gschwend"
 __copyright__ = "Copyright 2021, Jonas Gschwend"
@@ -25,17 +23,23 @@ __maintainer__ = "Jonas Gschwend"
 __email__ = "jo.gschwend@"
 __status__ = "Production"
 
-path = Path(__file__).parent.parent
+import plotly.graph_objects as go
 
 
-class ElevationData:
+class Markers:
     def __init__(self) -> None:
-        self.betlis = np.load("{}/npy_data/betlis.npy".format(path))
-        self.au = np.load("{}/npy_data/au.npy".format(path))
-        self.zollerbucht = np.load("{}/npy_data/zollerbucht.npy".format(path))
-        self.murg_west = np.load("{}/npy_data/murg_west.npy".format(path))
-        self.mols = np.load("{}/npy_data/hafen_mols_kaenzeli.npy".format(path))
-        self.terlinden = np.load("{}/npy_data/terlinden.npy".format(path))
-        self.tiefenwinkel = np.load("{}/npy_data/tiefenwinkel.npy".format(path))
-        self.broder = np.load("{}/npy_data/broder.npy".format(path))
-        self.zick_zack = np.load("{}/npy_data/zick_zack.npy".format(path))
+        self.betlis = go.Scatter3d(
+            x=[274],
+            y=[124],
+            z=[1],
+            mode="markers+text",
+            text=["Einstieg"],
+        )
+        self.au = go.Scatter3d()
+        self.zollerbucht = go.Scatter3d()
+        self.murg_west = go.Scatter3d()
+        self.mols = go.Scatter3d()
+        self.terlinden = go.Scatter3d()
+        self.tiefenwinkel = go.Scatter3d()
+        self.broder = go.Scatter3d()
+        self.zick_zack = go.Scatter3d()

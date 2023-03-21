@@ -75,6 +75,16 @@ class Colorscale:
             [border, "Green"],
             [1, "Green"],
         ]
+        border = 70 / (70 + 10)
+        self.terlinden = [
+            [0, "black"],
+            [border / 6 * 1, "MidnightBlue"],
+            [border / 6 * 2, "Blue"],
+            [border / 6 * 3, "DodgerBlue"],
+            [border, "Turquoise"],
+            [border, "Green"],
+            [1, "Green"],
+        ]
         border = 0.503
         self.tiefenwinkel = [
             [0, "black"],

@@ -21,6 +21,7 @@ import pandas as pd
 
 from src.colorscale import Colorscale
 from src.elevationData import ElevationData
+from src.markers import Markers
 
 __author__ = "Jonas Gschwend"
 __copyright__ = "Copyright 2021, Jonas Gschwend"
@@ -33,6 +34,7 @@ __status__ = "Production"
 app = Dash(__name__)
 colorscale = Colorscale()
 elevation_data = ElevationData()
+markers = Markers()
 
 d = {
     "Tauchplatz": [
@@ -67,6 +69,17 @@ d = {
         colorscale.tiefenwinkel,
         colorscale.zick_zack,
         colorscale.zollerbucht,
+    ],
+    "markers": [
+        markers.au,
+        markers.betlis,
+        markers.broder,
+        markers.mols,
+        markers.murg_west,
+        markers.terlinden,
+        markers.tiefenwinkel,
+        markers.zick_zack,
+        markers.zollerbucht,
     ],
 }
 
@@ -110,7 +123,7 @@ app.layout = html.Div(
     Input("show_contours", "value"),
     Input("contours_width", "value"),
 )
-def update_graph(tauchplatz, contours, contours_width):
+def update_graph(tauchplatz, show_contours, contours_width):
 
     fig = go.Figure(
         data=[
@@ -118,11 +131,12 @@ def update_graph(tauchplatz, contours, contours_width):
                 z=df.set_index("Tauchplatz").at[tauchplatz, "z_data"],
                 colorscale=df.set_index("Tauchplatz").at[tauchplatz, "colorscale"],
                 showscale=False,
+                hoverinfo="x+y+z",
             )
         ]
     )
 
-    if contours and contours_width > 0:
+    if show_contours and contours_width > 0:
         contours_start = 0
         while contours_start < 120:
             contours_start += contours_width
@@ -135,30 +149,18 @@ def update_graph(tauchplatz, contours, contours_width):
             )
         )
 
-    fig.update_layout(
-        scene_aspectmode="data",
-        scene=dict(
-            xaxis=dict(showgrid=False, zeroline=False, visible=False),
-            yaxis=dict(showgrid=False, zeroline=False, visible=False),
-            zaxis=dict(showgrid=False, zeroline=False, visible=False),
-        ),
-    )
     fig.update_coloraxes(showscale=False)
 
     fig.update_layout(
         title="Tauchplatz {}".format(tauchplatz),
         font=dict(size=18),
-    )
-
-    note = 'Source:<a href="https://www.swisstopo.admin.ch/de/home.html"">Federal Office of Topography swisstopo'
-    fig.add_annotation(
-        showarrow=False,
-        text=note,
-        font=dict(size=10),
-        xref="x domain",
-        x=0.5,
-        yref="y domain",
-        y=-0.5,
+        scene_aspectmode="data",
+        scene=dict(
+            xaxis=dict(showgrid=False, zeroline=False, visible=False),
+            yaxis=dict(showgrid=False, zeroline=False, visible=False),
+            zaxis=dict(showgrid=False, zeroline=False, visible=False),
+            annotations=df.set_index("Tauchplatz").at[tauchplatz, "markers"],
+        ),
     )
 
     return fig

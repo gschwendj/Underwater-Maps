@@ -25,21 +25,166 @@ __status__ = "Production"
 
 import plotly.graph_objects as go
 
+textsize = 30
+
 
 class Markers:
     def __init__(self) -> None:
-        self.betlis = go.Scatter3d(
-            x=[274],
-            y=[124],
-            z=[1],
-            mode="markers+text",
-            text=["Einstieg"],
-        )
-        self.au = go.Scatter3d()
-        self.zollerbucht = go.Scatter3d()
-        self.murg_west = go.Scatter3d()
-        self.mols = go.Scatter3d()
-        self.terlinden = go.Scatter3d()
-        self.tiefenwinkel = go.Scatter3d()
-        self.broder = go.Scatter3d()
-        self.zick_zack = go.Scatter3d()
+        self.betlis = [
+            dict(
+                x=540,
+                y=196,
+                z=0,
+                text="Einstieg Schiffstation",
+                ax=0,
+                ay=-50,
+                bgcolor="white",
+                bordercolor="black",
+            ),
+            dict(
+                x=427,
+                y=325,
+                z=0,
+                ax=0,
+                ay=-50,
+                text="Einstieg Bucht",
+                bgcolor="white",
+                bordercolor="black",
+            ),
+            dict(
+                x=243,
+                y=499,
+                z=0,
+                ax=0,
+                ay=-50,
+                text="Einstieg Strassenlaterne",
+                bgcolor="white",
+                bordercolor="black",
+            ),
+        ]
+        self.au = [
+            dict(
+                x=324,
+                y=177,
+                z=0,
+                ax=0,
+                ay=-50,
+                text="Einstieg",
+                bgcolor="white",
+                bordercolor="black",
+            )
+        ]
+        self.zollerbucht = [
+            dict(
+                x=180,
+                y=573,
+                z=0,
+                ax=0,
+                ay=-50,
+                text="Einstieg",
+                bgcolor="white",
+                bordercolor="black",
+            )
+        ]
+        self.murg_west = [
+            dict(
+                x=120,
+                y=120,
+                z=0,
+                ax=0,
+                ay=-50,
+                text="Einstieg",
+                bgcolor="white",
+                bordercolor="black",
+            )
+        ]
+        self.mols = [
+            dict(
+                x=369,
+                y=425,
+                z=0,
+                text="Einstieg Hafen Mols Untiefe",
+                ax=0,
+                ay=-50,
+                bgcolor="white",
+                bordercolor="black",
+            ),
+            dict(
+                x=566,
+                y=438,
+                z=0,
+                ax=0,
+                ay=-50,
+                text="Einstieg Hafen Mols West",
+                bgcolor="white",
+                bordercolor="black",
+            ),
+            dict(
+                x=633,
+                y=488,
+                z=0,
+                ax=0,
+                ay=-50,
+                text="Einstieg Hafen Mols Ost",
+                bgcolor="white",
+                bordercolor="black",
+            ),
+            dict(
+                x=994,
+                y=646,
+                z=0,
+                ax=0,
+                ay=-50,
+                text="Einstieg Känzeli",
+                bgcolor="white",
+                bordercolor="black",
+            ),
+        ]
+        self.terlinden = [
+            dict(
+                x=127,
+                y=174,
+                z=0,
+                ax=0,
+                ay=-50,
+                text="Einstieg",
+                bgcolor="white",
+                bordercolor="black",
+            )
+        ]
+        self.tiefenwinkel = [
+            dict(
+                x=573,
+                y=86,
+                z=0,
+                ax=0,
+                ay=-50,
+                text="Einstieg",
+                bgcolor="white",
+                bordercolor="black",
+            )
+        ]
+        self.broder = [
+            dict(
+                x=450,
+                y=67,
+                z=0,
+                ax=0,
+                ay=-50,
+                text="Einstieg",
+                bgcolor="white",
+                bordercolor="black",
+            )
+        ]
+        self.zick_zack = [
+            dict(
+                x=245,
+                y=110,
+                z=0,
+                ax=0,
+                ay=-50,
+                text="Einstieg",
+                bgcolor="white",
+                bordercolor="black",
+            )
+        ]

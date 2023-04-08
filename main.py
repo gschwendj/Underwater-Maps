@@ -94,6 +94,14 @@ app.layout = html.Div(
                     "Betlis",
                     id="tauchplatz",
                 ),
+                dcc.RadioItems(
+                    [
+                        "2D",
+                        "3D",
+                    ],
+                    "2D",
+                    id="dimension",
+                ),
             ],
             style={"width": "48%", "height": "5vh", "display": "inline-block"},
         ),
@@ -122,49 +130,88 @@ app.layout = html.Div(
     Input("tauchplatz", "value"),
     Input("show_contours", "value"),
     Input("contours_width", "value"),
+    Input("dimension", "value"),
 )
-def update_graph(tauchplatz, show_contours, contours_width):
-
-    fig = go.Figure(
-        data=[
-            go.Surface(
-                z=df.set_index("Tauchplatz").at[tauchplatz, "z_data"],
-                colorscale=df.set_index("Tauchplatz").at[tauchplatz, "colorscale"],
-                showscale=False,
-                hoverinfo="x+y+z",
-            )
-        ]
+def update_graph(tauchplatz, show_contours, contours_width, dimension):
+    if contours_width < 5:
+        contours_width = 5
+    contours_start = 0
+    while contours_start < 120:
+        contours_start += contours_width
+    if show_contours:
+        contours_3d = dict(
+            show=True,
+            start=-contours_start,
+            end=contours_width,
+            size=contours_width,
+        )
+    else:
+        contours_3d = dict(show=False)
+    contours_2d = dict(
+        showlabels=True,
+        start=-contours_start,
+        end=0,
+        size=contours_width,
+        labelfont=dict(size=15, color="white"),
     )
 
-    if show_contours and contours_width > 0:
-        contours_start = 0
-        while contours_start < 120:
-            contours_start += contours_width
-        fig.update_traces(
-            contours_z=dict(
-                show=True,
-                start=-contours_start,
-                end=contours_width,
-                size=contours_width,
-            )
+    if dimension == "2D":
+        fig = go.Figure(
+            data=[
+                go.Contour(
+                    colorscale=[
+                        [0, "black"],
+                        [0.01, "MidnightBlue"],
+                        [0.50, "Blue"],
+                        [0.75, "DodgerBlue"],
+                        [0.99, "Turquoise"],
+                        [1, "Green"],
+                    ],
+                    z=df.set_index("Tauchplatz").at[tauchplatz, "z_data"],
+                    showscale=False,
+                    # contours_coloring="none",
+                    contours=contours_2d,
+                )
+            ]
+        )
+        fig.update_yaxes(
+            scaleanchor="x",
+            scaleratio=1,
+        )
+    else:
+        fig = go.Figure(
+            data=[
+                go.Surface(
+                    z=df.set_index("Tauchplatz").at[tauchplatz, "z_data"],
+                    colorscale=df.set_index("Tauchplatz").at[tauchplatz, "colorscale"],
+                    showscale=False,
+                    hoverinfo="x+y+z",
+                )
+            ]
         )
 
-    fig.update_coloraxes(showscale=False)
+        if show_contours and contours_width > 0:
+            contours_start = 0
+            while contours_start < 120:
+                contours_start += contours_width
+            fig.update_traces(contours_z=contours_3d)
 
-    fig.update_layout(
-        title="Tauchplatz {}".format(tauchplatz),
-        font=dict(size=18),
-        scene_aspectmode="data",
-        scene=dict(
-            xaxis=dict(showgrid=False, zeroline=False, visible=False),
-            yaxis=dict(showgrid=False, zeroline=False, visible=False),
-            zaxis=dict(showgrid=False, zeroline=False, visible=False),
-            annotations=df.set_index("Tauchplatz").at[tauchplatz, "markers"],
-        ),
-    )
+        fig.update_coloraxes(showscale=False)
+
+        fig.update_layout(
+            title="Tauchplatz {}".format(tauchplatz),
+            font=dict(size=18),
+            scene_aspectmode="data",
+            scene=dict(
+                xaxis=dict(showgrid=False, zeroline=False, visible=False),
+                yaxis=dict(showgrid=False, zeroline=False, visible=False),
+                zaxis=dict(showgrid=False, zeroline=False, visible=False),
+                annotations=df.set_index("Tauchplatz").at[tauchplatz, "markers"],
+            ),
+        )
 
     return fig
 
 
 if __name__ == "__main__":
-    app.run_server(host="0.0.0.0")
+    app.run_server(host="0.0.0.0", debug=False)

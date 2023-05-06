@@ -124,7 +124,6 @@ app.layout = html.Div(
     Input("contours_width", "value"),
 )
 def update_graph(tauchplatz, show_contours, contours_width):
-
     fig = go.Figure(
         data=[
             go.Surface(
@@ -151,6 +150,10 @@ def update_graph(tauchplatz, show_contours, contours_width):
 
     fig.update_coloraxes(showscale=False)
 
+    annotations = df.set_index("Tauchplatz").at[tauchplatz, "markers"]
+    for annotation in annotations:
+        annotation.update(dict(z=0, ax=0, ay=-50))
+
     fig.update_layout(
         title="Tauchplatz {}".format(tauchplatz),
         font=dict(size=18),
@@ -159,7 +162,7 @@ def update_graph(tauchplatz, show_contours, contours_width):
             xaxis=dict(showgrid=False, zeroline=False, visible=False),
             yaxis=dict(showgrid=False, zeroline=False, visible=False),
             zaxis=dict(showgrid=False, zeroline=False, visible=False),
-            annotations=df.set_index("Tauchplatz").at[tauchplatz, "markers"],
+            annotations=annotations,
         ),
     )
 

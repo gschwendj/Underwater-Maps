@@ -26,6 +26,15 @@ __status__ = "Production"
 
 class Colorscale:
     def __init__(self) -> None:
+        # one colorscale that can be used for the 2D maps
+        self.maps = [
+            [0, "black"],
+            [0.01, "MidnightBlue"],
+            [0.50, "Blue"],
+            [0.75, "DodgerBlue"],
+            [0.99, "Turquoise"],
+            [1, "Green"],
+        ]
         self.betlis = [
             [0, "black"],
             [0.125, "MidnightBlue"],

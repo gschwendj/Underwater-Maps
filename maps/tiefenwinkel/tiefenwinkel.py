@@ -35,6 +35,7 @@ __status__ = "Production"
 annotations = Tiefenwinkel().markers
 annotations[0].update(dict(showarrow=True, arrowhead=2, arrowsize=2, ax=50, ay=50))
 annotations[0]["x"] = annotations[0]["x"] - 325
+annotations[0]["y"] = annotations[0]["y"] - 50
 
 fig = go.Figure(
     data=[

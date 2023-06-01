@@ -14,17 +14,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-import numpy as np
 import plotly.graph_objects as go
-from pathlib import Path
 import os, sys
 
 current = os.path.dirname(os.path.realpath(__file__))
 parent_directory = os.path.dirname(os.path.dirname(current))
 sys.path.append(parent_directory)
-from src.markers import Markers
-from src.colorscale import Colorscale
-from src.elevationData import ElevationData
+from src.divesites import Mols
+from maps.colorscale import colorscale
 
 __author__ = "Jonas Gschwend"
 __copyright__ = "Copyright 2021, Jonas Gschwend"
@@ -35,8 +32,7 @@ __email__ = "jo.gschwend@"
 __status__ = "Production"
 
 
-colorscale = Colorscale().maps
-annotations = Markers().mols
+annotations = Mols().markers
 annotations[0].update(dict(ax=0, ay=45))
 annotations[1].update(dict(ax=45, ay=62))
 annotations[2].update(dict(ax=55, ay=50))
@@ -52,7 +48,7 @@ fig = go.Figure(
     data=[
         go.Contour(
             colorscale=colorscale,
-            z=ElevationData().mols[300:, 100:],
+            z=Mols().elevationData[300:, 100:],
             showscale=False,
             # contours_coloring="none",
             contours=dict(
@@ -80,5 +76,4 @@ fig.update_layout(
     annotations=annotations,
 )
 
-# fig.show()
 fig.write_image("{}/mols.pdf".format(current), scale=4, width=1100, height=1120)

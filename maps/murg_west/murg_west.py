@@ -14,16 +14,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-import numpy as np
 import plotly.graph_objects as go
 import os, sys
 
 current = os.path.dirname(os.path.realpath(__file__))
 parent_directory = os.path.dirname(os.path.dirname(current))
 sys.path.append(parent_directory)
-from src.markers import Markers
-from src.colorscale import Colorscale
-from src.elevationData import ElevationData
+from src.divesites import Murg_west
+from maps.colorscale import colorscale
 
 __author__ = "Jonas Gschwend"
 __copyright__ = "Copyright 2021, Jonas Gschwend"
@@ -34,8 +32,7 @@ __email__ = "jo.gschwend@"
 __status__ = "Production"
 
 
-colorscale = Colorscale().maps
-annotations = Markers().murg_west
+annotations = Murg_west().markers
 annotations[0].update(dict(ax=0, ay=50, showarrow=True, arrowhead=2, arrowsize=2))
 annotations[0]["y"] = annotations[0]["y"] - 51
 
@@ -44,7 +41,7 @@ fig = go.Figure(
     data=[
         go.Contour(
             colorscale=colorscale,
-            z=ElevationData().murg_west[50:250, :],
+            z=Murg_west().elevationData[50:250, :],
             showscale=False,
             # contours_coloring="none",
             contours=dict(
@@ -72,5 +69,4 @@ fig.update_layout(
     annotations=annotations,
 )
 
-# fig.show()
 fig.write_image("{}/murg_west.pdf".format(current), scale=4, width=1000, height=600)

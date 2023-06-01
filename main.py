@@ -19,9 +19,7 @@ from dash import Dash, html, dcc, Input, Output
 import plotly.graph_objects as go
 import pandas as pd
 
-from src.colorscale import Colorscale
-from src.elevationData import ElevationData
-from src.markers import Markers
+import src.divesites as ds
 
 __author__ = "Jonas Gschwend"
 __copyright__ = "Copyright 2021, Jonas Gschwend"
@@ -32,55 +30,24 @@ __email__ = "jo.gschwend@"
 __status__ = "Production"
 
 app = Dash(__name__)
-colorscale = Colorscale()
-elevation_data = ElevationData()
-markers = Markers()
+
+divesites = [
+    ds.Au(),
+    ds.Betlis(),
+    ds.Broder(),
+    ds.Mols(),
+    ds.Murg_west(),
+    ds.Terlinden(),
+    ds.Tiefenwinkel(),
+    ds.Zick_zack(),
+    ds.Zollerbucht(),
+]
 
 d = {
-    "Tauchplatz": [
-        "Au",
-        "Betlis",
-        "Broder",
-        "Känzeli und Hafen Mols",
-        "Murg West",
-        "Terlinden",
-        "Tiefenwinkel",
-        "Zick-Zack",
-        "Zollerbucht",
-    ],
-    "z_data": [
-        elevation_data.au,
-        elevation_data.betlis,
-        elevation_data.broder,
-        elevation_data.mols,
-        elevation_data.murg_west,
-        elevation_data.terlinden,
-        elevation_data.tiefenwinkel,
-        elevation_data.zick_zack,
-        elevation_data.zollerbucht,
-    ],
-    "colorscale": [
-        colorscale.au,
-        colorscale.betlis,
-        colorscale.broder,
-        colorscale.mols,
-        colorscale.murg_west,
-        colorscale.terlinden,
-        colorscale.tiefenwinkel,
-        colorscale.zick_zack,
-        colorscale.zollerbucht,
-    ],
-    "markers": [
-        markers.au,
-        markers.betlis,
-        markers.broder,
-        markers.mols,
-        markers.murg_west,
-        markers.terlinden,
-        markers.tiefenwinkel,
-        markers.zick_zack,
-        markers.zollerbucht,
-    ],
+    "Tauchplatz": [site.name for site in divesites],
+    "z_data": [site.elevationData for site in divesites],
+    "colorscale": [site.colorscale for site in divesites],
+    "markers": [site.markers for site in divesites],
 }
 
 df = pd.DataFrame(data=d)

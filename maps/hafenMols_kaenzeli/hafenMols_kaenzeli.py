@@ -26,7 +26,7 @@ from maps.colorscale import colorscale
 __author__ = "Jonas Gschwend"
 __copyright__ = "Copyright 2021, Jonas Gschwend"
 __license__ = "GPL"
-__version__ = "0.1"
+__version__ = "v1.0"
 __maintainer__ = "Jonas Gschwend"
 __status__ = "Production"
 

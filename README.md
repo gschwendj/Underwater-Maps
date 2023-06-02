@@ -1,6 +1,6 @@
 # Underwater-Maps
 
-This repository contains a [Dash](https://dash.plotly.com/) web application that displays a 3D surface plot of dive sites in Switzerland. The application is containerized with Docker.
+This repository contains a [Dash](https://dash.plotly.com/) web application that displays a 3D surface plot of dive sites in Switzerland. The application is containerized with Docker. There is also a demo available at my website [gschwendj.com](http://gschwendj.com). The website does not have a ssl certificate, so http must be used to access it.
 
 ![example](./image.png)
 
